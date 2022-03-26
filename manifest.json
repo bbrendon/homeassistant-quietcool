@@ -2,8 +2,8 @@
 	"domain": "quietcool",
 	"name": "QuietCool Fan",
         "version": "0.0.1",	
-	"documentation": "https://github.com/stabbylambda/homeassistant-quietcool",
+	"documentation": "https://github.com/bbrendon/homeassistant-quietcool",
 	"dependencies": [],
-	"codeowners": ["@stabbylambda"],
-	"requirements": ["https://github.com/stabbylambda/quietcool-python/archive/master.zip#quietcool==0.1"]
+	"codeowners": ["@bbrendon"],
+	"requirements": ["https://github.com/bbrendon/quietcool-python/archive/master.zip#quietcool==0.1"]
 }
