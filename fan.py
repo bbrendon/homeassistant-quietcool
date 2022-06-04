@@ -82,6 +82,7 @@ class QuietcoolFan(FanEntity):
         """Turn on the entity."""
         _LOGGER.info(f"Turning on {self.name}")
         await self._fan.turn_on()
+        await self._fan.set_current_speed(1)
 
     async def async_turn_off(self, **kwargs) -> None:
         """Turn on the entity."""
