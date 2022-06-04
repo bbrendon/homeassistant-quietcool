@@ -1,10 +1,10 @@
 import logging
 import voluptuous as vol
 from homeassistant.components.fan import (FanEntity,
-                                          SPEED_OFF,
-                                          SPEED_LOW,
-                                          SPEED_MEDIUM,
-                                          SPEED_HIGH,
+                                        #   SPEED_OFF,
+                                        #   SPEED_LOW,
+                                        #   SPEED_MEDIUM,
+                                        #   SPEED_HIGH,
                                           SUPPORT_SET_SPEED,
                                           PLATFORM_SCHEMA)
 from homeassistant.const import CONF_HOST
@@ -62,6 +62,22 @@ class QuietcoolFan(FanEntity):
         }
         return speed_map[self._fan.current_speed]
 
+    async def async_set_percentage(self, percentage: int) -> None:
+        """Set the speed percentage of the fan."""
+        _LOGGER.info(f"Setting {self.name} to {percentage}")
+        # speed_map = {
+        #     SPEED_HIGH: 3,
+        #     SPEED_MEDIUM: 2,
+        #     SPEED_LOW: 1,
+        #     SPEED_OFF: 0
+        # }
+
+        # await self._fan.set_current_speed(speed_map[speed])        
+        if percentage < 50:
+            await self._fan.set_current_speed(1)        
+        else:
+            await self._fan.set_current_speed(3)
+
     async def async_turn_on(self, speed: str = None, **kwargs) -> None:
         """Turn on the entity."""
         _LOGGER.info(f"Turning on {self.name}")
@@ -71,17 +87,6 @@ class QuietcoolFan(FanEntity):
         """Turn on the entity."""
         _LOGGER.info(f"Turning off {self.name}")
         await self._fan.turn_off()
-
-    async def async_set_speed(self, speed: str) -> None:
-        """Set the speed of the fan."""
-        _LOGGER.info(f"Setting {self.name} to {speed}")
-        speed_map = {
-            SPEED_HIGH: 3,
-            SPEED_MEDIUM: 2,
-            SPEED_LOW: 1,
-            SPEED_OFF: 0
-        }
-        await self._fan.set_current_speed(speed_map[speed])
 
     @property
     def name(self):
