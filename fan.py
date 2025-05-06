@@ -44,6 +44,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 class QuietcoolFan(FanEntity):
     def __init__(self, fan):
         self._fan = fan
+        self._attr_unique_id = f"quietcool_{self._fan}"
 
     @property
     def name(self):
