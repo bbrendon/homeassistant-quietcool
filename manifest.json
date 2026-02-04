@@ -5,5 +5,6 @@
 	"documentation": "https://github.com/bbrendon/homeassistant-quietcool",
 	"dependencies": [],
 	"codeowners": ["@bbrendon"],
-	"requirements": ["https://github.com/bbrendon/quietcool-python/archive/master.zip#quietcool==0.1"]
+	"requirements": ["quietcool @ https://github.com/bbrendon/quietcool-python/archive/master.zip"]
+
 }
